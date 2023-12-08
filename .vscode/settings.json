@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "libs",
-        "contracts"
+        "contracts",
+        "structure"
     ]
 }

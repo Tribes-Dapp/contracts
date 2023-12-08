@@ -2,7 +2,8 @@
 @structs/=src/struct/s
 @contracts/=src/
 @script/=script
-@iden3/contracts/=lib/contracts/contracts
+@iden3/=lib/contracts/contracts
+solidity-bytes-utils/contracts/=lib/solidity-bytes-utils/contracts
 @utils/=src/ccip/utils/
 @chainlink/contracts-ccip/=lib/ccip/contracts/src/v0.8/
 @cartesi/contracts/=lib/rollups-contracts/onchain/rollups/contracts/
