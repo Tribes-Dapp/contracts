@@ -63,7 +63,7 @@ contract MyToken is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
     ) internal override {
         IInputBox(inputBox).addInput(
             dapp,
-            abi.encodePacked(_msgSender())
+            abi.encodePacked(msg.sig, _msgSender())
         );
         emit Whitelisted(_msgSender(), requestId);
     }
