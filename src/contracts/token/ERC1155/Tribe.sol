@@ -7,18 +7,17 @@ import {IInputBox} from "@cartesi/contracts/inputs/IInputBox.sol";
 import {ICircuitValidator} from "@iden3/interfaces/ICircuitValidator.sol";
 import {ERC1155} from "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
-import {ERC1155Supply} from "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
-import {ERC1155Pausable} from "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol";
 import {ERC1155Burnable} from "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 
-contract MyToken is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
-    address public inputBox;
+contract Tribe is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
     address public dapp;
+    address public inputBox;
 
     uint64 public constant KYC_REQUEST_ID = 1;
 
     bytes32 public constant DAPP_ROLE = keccak256("DAPP_ROLE");
 
+    error UserNotWhitelisted(address sender, uint64 requestId);
     error VerificationFailed(address sender, uint64 requestId);
 
     event Whitelisted(address sender, uint64 requestId);
@@ -30,17 +29,21 @@ contract MyToken is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
         dapp = _dapp;
     }
 
-    function mint(address account, uint256 id, uint256 amount, bytes memory data)
-        public
-        onlyRole(DAPP_ROLE)
-    {
+    function mint(
+        address account,
+        uint256 id,
+        uint256 amount,
+        bytes memory data
+    ) public onlyRole(DAPP_ROLE) {
         _mint(account, id, amount, data);
     }
 
-    function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
-        public
-        onlyRole(DAPP_ROLE)
-    {
+    function mintBatch(
+        address to,
+        uint256[] memory ids,
+        uint256[] memory amounts,
+        bytes memory data
+    ) public onlyRole(DAPP_ROLE) {
         _mintBatch(to, ids, amounts, data);
     }
 
@@ -52,13 +55,14 @@ contract MyToken is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
         address addr = GenesisUtils.int256ToAddress(
             inputs[validator.getChallengeInputIndex()]
         );
-        if (_msgSender() != addr) revert VerificationFailed(_msgSender(), requestId);
+        if (_msgSender() != addr)
+            revert VerificationFailed(_msgSender(), requestId);
         emit VerificationCompleted(_msgSender(), requestId);
     }
 
     function _afterProofSubmit(
         uint64 requestId,
-        uint256[] memory, /* inputs */
+        uint256[] memory /* inputs */,
         ICircuitValidator /* validator */
     ) internal override {
         IInputBox(inputBox).addInput(
@@ -68,12 +72,22 @@ contract MyToken is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
         emit Whitelisted(_msgSender(), requestId);
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC1155, AccessControl)
-        returns (bool)
-    {
+    function _beforeTokenTransfer(
+        address operator,
+        address from,
+        address to,
+        uint256[] memory ids,
+        uint256[] memory amounts,
+        bytes memory data
+    ) internal override(ERC1155) {
+        super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
+        if (proofs[to][KYC_REQUEST_ID] != true)
+            revert UserNotWhitelisted(to, KYC_REQUEST_ID);
+    }
+
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view override(ERC1155, AccessControl) returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }
