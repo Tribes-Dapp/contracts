@@ -41,9 +41,9 @@ Welcome to the project documentation! This repository contains essential documen
 
 ## 4. Contracts Addresses 🔍
 
-Deployer Plugin():
-KYCVerifier():
-Cartesi Dapp():
+- Deployer Plugin():``
+- KYCVerifier():``
+- Cartesi Dapp():``
 
 ## 5. Viewing Documentation Locally 💻
 
