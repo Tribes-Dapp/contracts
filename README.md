@@ -16,22 +16,21 @@ Welcome to the project documentation! This repository contains essential documen
 
 - To implement the plugin contract (Proxy) in testnet, run the command below:
 
-> [!IMPORTANT]
-> Before deploying the above contract, it is necessary to modify the salt contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/utils/Helper.sol). Behind this implementation, we have a deterministic deployment; if the salt is not changed, the transaction will be reverted by the network.
-
     ```bash
     $ make plugin
     ```
 
+> [!IMPORTANT]
+> Before deploying the above contract, it is necessary to modify the salt contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/utils/Helper.sol). Behind this implementation, we have a deterministic deployment; if the salt is not changed, the transaction will be reverted by the network.
  
 - To call the Tribe contract bytecode, run the command bellow:
-
-> [!IMPORTANT]
-> Before call this script, it is necessary to modify the dapp address contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/TribeBytecode.s.sol).
 
     ```bash
     $ make bytecode
     ```
+
+> [!IMPORTANT]
+> Before call this script, it is necessary to modify the dapp address contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/TribeBytecode.s.sol).
 
 ## 3. System Architecture 📐
 
