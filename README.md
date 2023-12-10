@@ -26,7 +26,7 @@ Welcome to the project documentation! This repository contains essential documen
 - To call the Tribe contract bytecode, run the command bellow:
 
     ```bash
-    $ make bytecode
+    $ make bytecode > bytecode.txt
     ```
 
 > [!IMPORTANT]

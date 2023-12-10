@@ -10,14 +10,14 @@ END_LOG = @echo "==================== END OF LOG ======================"
 define deploy_deployer_plugin
 	$(START_LOG)
 	@forge test
-	@forge script script/DeployDeployerPlugin.s.sol --rpc-url $(RPC_URL) --broadcast --verify --etherscan-api-key $(API_KEY) -vvvvv
+	@forge script script/DeployDeployerPlugin.s.sol --rpc-url $(RPC_URL) --broadcast -vvvvv
 	$(END_LOG)
 endef
 
 define deploy_tribe
 	$(START_LOG)
 	@forge test
-	@forge script script/DeployTribe.s.sol --rpc-url $(RPC_URL) --broadcast --verify --etherscan-api-key $(API_KEY) -vvvvv
+	@forge script script/DeployTribe.s.sol --rpc-url $(RPC_URL) --broadcast --verify -vvvvv
 	$(END_LOG)
 endef
 
