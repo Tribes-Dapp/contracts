@@ -1,6 +1,6 @@
-# Foundry Lilium 📚
+# Contracts 📚
 
-Welcome to the project documentation! This repository contains essential documentation to guide you through the setup and usage of the project. As a submodule of the Cartesi Machines repositories, it plays a crucial role in ensuring smooth operations. Follow the steps below to get started:
+Welcome to the project documentation! This repository contains essential documentation to guide you through the setup and usage of the project. Follow the steps below to get started:
 
 ## 1. Setting Up Environment 🌍
 
@@ -17,7 +17,7 @@ Welcome to the project documentation! This repository contains essential documen
 - To implement the plugin contract (Proxy) in testnet, run the command below:
 
 > [!IMPORTANT]
-> Before deploying the above contract, it is necessary to modify the salt contained in (path). Behind this implementation, we have a deterministic deployment; if the salt is not changed, the transaction will be reverted by the network.
+> Before deploying the above contract, it is necessary to modify the salt contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/utils/Helper.sol). Behind this implementation, we have a deterministic deployment; if the salt is not changed, the transaction will be reverted by the network.
 
     ```bash
     $ make plugin
@@ -27,7 +27,7 @@ Welcome to the project documentation! This repository contains essential documen
 - To call the Tribe contract bytecode, run the command bellow:
 
 > [!IMPORTANT]
-> Before call this script, it is necessary to modify the dapp address contained in (path).
+> Before call this script, it is necessary to modify the dapp address contained in [path](https://github.com/Tribes-Dapp/contracts/blob/main/script/TribeBytecode.s.sol).
 
     ```bash
     $ make bytecode
