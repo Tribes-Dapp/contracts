@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 import {IInputBox} from "@cartesi/contracts/inputs/IInputBox.sol";
 
-contract ProxyDeployerPlugin {
+contract DeployerPlugin {
     address public inputBox;
 
     constructor(address _inputBox) {
@@ -25,7 +25,7 @@ contract ProxyDeployerPlugin {
             // create(v, p, n)
             // v = amount of ETH to send
             // p = pointer in memory to start of _bytecode
-            // n = size of _bytecode
+            //36 n = size of _bytecode
             addr := create(callvalue(), add(_bytecode, 0x20), mload(_bytecode))
         }
         if (addr == address(0)) revert DeployFailed(msg.sender, _id, _bytecode);

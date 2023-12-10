@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {ZKPVerifier} from "@iden3/ZKPVerifier.sol";
+import {ZKPVerifier} from "@iden3/verifiers/ZKPVerifier.sol";
 import {GenesisUtils} from "@iden3/lib/GenesisUtils.sol";
 import {IInputBox} from "@cartesi/contracts/inputs/IInputBox.sol";
 import {ICircuitValidator} from "@iden3/interfaces/ICircuitValidator.sol";
@@ -23,7 +23,8 @@ contract Tribe is ZKPVerifier, ERC1155, AccessControl, ERC1155Burnable {
     event Whitelisted(address sender, uint64 requestId);
     event VerificationCompleted(address sender, uint64 requestId);
 
-    constructor(address _dapp) ERC1155("") {
+    constructor(address _dapp, address _inputBox) ERC1155("") {
+        inputBox = _inputBox;
         _grantRole(DEFAULT_ADMIN_ROLE, _dapp);
         _grantRole(DAPP_ROLE, _dapp);
         dapp = _dapp;

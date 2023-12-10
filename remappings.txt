@@ -1,6 +1,6 @@
 @script/=script/
 @structs/=src/struct/s
-@contracts/=src/
+@contracts/=src/contracts
 @script/=script
 @iden3/=lib/contracts/contracts
 solidity-bytes-utils/contracts/=lib/solidity-bytes-utils/contracts
