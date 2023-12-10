@@ -34,7 +34,7 @@ Welcome to the project documentation! This repository contains essential documen
     ```
 
 ## 3. System Architecture 📐
-<p align="center">
+
 ```mermaid
 graph TD
     classDef core fill:#ffe95a,color:#000
@@ -91,7 +91,6 @@ graph TD
     click ERC721 href "https://eips.ethereum.org/EIPS/eip-721"
     click ERC1155 href "https://eips.ethereum.org/EIPS/eip-1155"
 ```
-<p>
 
 ## 4. Contracts Addresses 🔍
 
