@@ -10,10 +10,10 @@ contract DeployTribe is Script {
     Helper helper = new Helper();
 
     function run() external {
-        (address _dapp, address _inputBox,) = helper.data();
+        (, address _inputBox,) = helper.data();
 
         vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
-        Tribe tribe = new Tribe(_dapp, _inputBox);
+        Tribe tribe = new Tribe(_inputBox);
         vm.stopBroadcast();
         
         console.log("Tribe address:", address(tribe));

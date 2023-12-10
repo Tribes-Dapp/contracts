@@ -17,7 +17,6 @@ contract DeployerPlugin {
     receive() external payable {}
 
     function deploy(
-        address _dapp,
         string memory _id,
         bytes memory _bytecode
     ) external payable returns (address addr) {
@@ -30,7 +29,8 @@ contract DeployerPlugin {
         }
         if (addr == address(0)) revert DeployFailed(msg.sender, _id, _bytecode);
 
-        IInputBox(inputBox).addInput(_dapp, abi.encodePacked(_id, addr));
+        IInputBox(inputBox).addInput(msg.sender, abi.encodePacked(msg.sig, _id, addr));
         emit DeployContract(msg.sender, _id, _bytecode);
+        return addr;
     }
 }

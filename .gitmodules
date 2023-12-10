@@ -4,12 +4,6 @@
 [submodule "lib/rollups-contracts"]
 	path = lib/rollups-contracts
 	url = https://github.com/cartesi/rollups-contracts
-[submodule "lib/solidity-bytes-utils"]
-	path = lib/solidity-bytes-utils
-	url = https://github.com/GNSPS/solidity-bytes-utils
 [submodule "lib/openzeppelin-contracts"]
 	path = lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
-[submodule "lib/contracts"]
-	path = lib/contracts
-	url = https://github.com/iden3/contracts

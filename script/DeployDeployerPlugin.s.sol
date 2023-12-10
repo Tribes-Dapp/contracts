@@ -16,6 +16,6 @@ contract DeployDeployerPlugin is Script {
         DeployerPlugin proxy = (new DeployerPlugin){salt: _salt}(_inputBox);
         vm.stopBroadcast();
 
-        console.log("Proxy Deployer Plugin address:", address(proxy));
+        console.log("Proxy deployer plugin address:", address(proxy)); 
     }
 }
