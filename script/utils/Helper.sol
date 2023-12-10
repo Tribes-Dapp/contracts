@@ -21,7 +21,7 @@ contract Helper {
         args = Data({
             dapp: address(0), // change this to your dapp address
             inputBox: 0x59b22D57D4f067708AB0c00552767405926dc768,
-            salt: bytes32(abi.encode(4)) // change every time you deploy
+            salt: bytes32(abi.encode(6)) // change every time you deploy
         });
     }
 
