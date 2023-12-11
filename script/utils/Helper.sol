@@ -27,8 +27,8 @@ contract Helper {
 
     function _getLocalArgs() internal pure returns (Data memory args) {
         args = Data({
-            dapp: 0x59b22D57D4f067708AB0c00552767405926dc768,
-            inputBox: address(1),
+            dapp: 0x70ac08179605AF2D9e75782b8DEcDD3c22aA4D0C,
+            inputBox: 0x59b22D57D4f067708AB0c00552767405926dc768,
             salt: bytes32(abi.encode(0))
         });
     }
